@@ -43,3 +43,5 @@ call plug#end()
 colorscheme onedark
 
 EOF
+
+fi
