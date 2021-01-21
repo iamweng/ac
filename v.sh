@@ -42,7 +42,7 @@ call plug#end()
 " Vim Mapper
 nnoremap z i<BS><Esc>l
 inoremap ;; <Esc>la
-inoremap jk <Esc>
+inoremap jj <Esc>
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
