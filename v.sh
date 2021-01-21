@@ -22,26 +22,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 call plug#end()
 
-" Vim Mapper set <Esc> <Left> <Down> <Up> <Right> to <Nop>
-"nnoremap <Esc> <Nop>
-"nnoremap <Left> <Nop>
-"nnoremap <Down> <Nop>
-"nnoremap <Up> <Nop>
-"nnoremap <Right> <Nop>
-"inoremap <Esc> <Nop>
-"inoremap <Left> <Nop>
-"inoremap <Down> <Nop>
-"inoremap <Up> <Nop>
-"inoremap <Right> <Nop>
-"vnoremap <Esc> <Nop>
-"vnoremap <Left> <Nop>
-"vnoremap <Down> <Nop>
-"vnoremap <Up> <Nop>
-"vnoremap <Right> <Nop>
-
 " Vim Mapper
 nnoremap z i<BS><Esc>l
-inoremap ;; <Esc>la
 inoremap jj <Esc>
 "inoremap ( ()<Esc>i
 "inoremap [ []<Esc>i
