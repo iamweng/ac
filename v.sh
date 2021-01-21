@@ -43,16 +43,18 @@ call plug#end()
 nnoremap z i<BS><Esc>l
 inoremap ;; <Esc>la
 inoremap jj <Esc>
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap < <><Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
-"inoremap <Alt-h> <Left>
-"inoremap <Alt-j> <Down>
-"inoremap <Alt-k> <Up>
-"inoremap <Alt-l> <Right>
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
+"inoremap { {}<Esc>i
+"inoremap < <><Esc>i
+"inoremap ' ''<Esc>i
+"inoremap " ""<Esc>i
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
+"inoremap <A-h> <Left>
+"inoremap <A-j> <Down>
+"inoremap <A-k> <Up>
+"inoremap <A-l> <Right>
 
 " Vim Configuration
 syntax on
