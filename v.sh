@@ -14,27 +14,47 @@ fi
 if [ ! -f ".vimrc" ]; then
 cat > ".vimrc" << EOF
 
+" This is amazing configuration.
+
+" Vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 call plug#end()
 
-" vim mapper
+" Vim Mapper set <Esc> <Left> <Down> <Up> <Right> to <Nop>
+"nnoremap <Esc> <Nop>
+"nnoremap <Left> <Nop>
+"nnoremap <Down> <Nop>
+"nnoremap <Up> <Nop>
+"nnoremap <Right> <Nop>
+"inoremap <Esc> <Nop>
+"inoremap <Left> <Nop>
+"inoremap <Down> <Nop>
+"inoremap <Up> <Nop>
+"inoremap <Right> <Nop>
+"vnoremap <Esc> <Nop>
+"vnoremap <Left> <Nop>
+"vnoremap <Down> <Nop>
+"vnoremap <Up> <Nop>
+"vnoremap <Right> <Nop>
+
+" Vim Mapper
 nnoremap z i<BS><Esc>l
 inoremap ,, <Esc>la
-inoremap jj <Esc>
+inoremap ff <Esc>
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 inoremap < <><Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
-inoremap <A-h> <Left>
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-inoremap <A-l> <Right>
+"inoremap <Alt-h> <Left>
+"inoremap <Alt-j> <Down>
+"inoremap <Alt-k> <Up>
+"inoremap <Alt-l> <Right>
 
-" vim configuration
+" Vim Configuration
 syntax on
 set vb t_vb=
 set tabstop=8
@@ -54,7 +74,7 @@ set history=200
 let loaded_matchparen=1
 colorscheme onedark
 
-" coc.nvim configuration
+" Coc.nvim Configuration
 set hidden
 set nobackup
 set nowritebackup
