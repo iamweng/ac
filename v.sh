@@ -49,8 +49,6 @@ inoremap jj <Esc>
 "inoremap < <><Esc>i
 "inoremap ' ''<Esc>i
 "inoremap " ""<Esc>i
-inoremap <C-j> <C-n>
-inoremap <C-k> <C-p>
 "inoremap <A-h> <Left>
 "inoremap <A-j> <Down>
 "inoremap <A-k> <Up>
