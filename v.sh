@@ -20,7 +20,19 @@ Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " vim mapper
+nnoremap z i<BS><Esc>l
+inoremap ,, <Esc>la
 inoremap jj <Esc>
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap < <><Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+inoremap <A-h> <Left>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-l> <Right>
 
 " vim configuration
 syntax on
