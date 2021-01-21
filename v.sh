@@ -14,8 +14,16 @@ fi
 if [ ! -f ".vimrc" ]; then
 cat > ".vimrc" << EOF
 
-syntax off
+call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'joshdick/onedark.vim'
+call plug#end()
 
+" vim mapper
+inoremap jj <Esc>
+
+" vim configuration
+syntax on
 set vb t_vb=
 set tabstop=8
 set softtabstop=8
@@ -32,15 +40,13 @@ set langmenu=en_US.UTF-8
 set helplang=en
 set history=200
 let loaded_matchparen=1
-
-inoremap jj <Esc>
-
-call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'joshdick/onedark.vim'
-call plug#end()
-
 colorscheme onedark
+
+" coc.nvim configuration
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=500
 
 EOF
 
