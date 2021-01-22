@@ -18,12 +18,14 @@ cat > ".vimrc" << EOF
 
 " Vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " Vim Configuration
-syntax off
-set vb t_vb=
+colorscheme onedark
+syntax on
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
@@ -32,7 +34,6 @@ set smarttab
 set autoindent
 set cindent
 set nocompatible
-set showcmd
 let loaded_matchparen=1
 
 " Vim-gutentags Configuration
@@ -47,6 +48,11 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
 endif
+
+" Vim Mapper
+inoremap jj <Esc>
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
 
 EOF
 
