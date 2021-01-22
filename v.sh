@@ -38,6 +38,7 @@ set termencoding=utf-8
 set langmenu=en_US.UTF-8
 set helplang=en
 set history=200
+set showcmd
 let loaded_matchparen=1
 
 " Vim-gutentags Configuration
