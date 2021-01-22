@@ -2,16 +2,17 @@ cd ~
 
 shell_file=".bashrc"
 
-if [ "$SHELL" == "/bin/zsh" ]; then
+if [ "$SHELL" = "/bin/zsh" ]; then
 	shell_file=".zshrc"
 fi
 
 if [ ! -f "$shell_file" ]; then
 cat > "$shell_file" << EOF
 
+export LLVM=/usr/local/Cellar/llvm/11.0.0_1/bin
 export GOPATH=$HOME/github.com/go
 export GOBIN=$HOME/github.com/go/bin
-export PATH=$PATH:$GOPATH:$GOBIN:/usr/local/Cellar/llvm/11.0.0_1/bin
+export PATH=$PATH:$HOME/github.com/go:$HOME/github.com/go/bin:/usr/local/Cellar/llvm/11.0.0_1/bin
 
 if [ "$SHELL" = "/bin/zsh" ]; then
  	export PS1='%F{162}[%n@%m:%d]%f'
