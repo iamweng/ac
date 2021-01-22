@@ -18,26 +18,11 @@ cat > ".vimrc" << EOF
 
 " Vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'joshdick/onedark.vim'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
-" Vim Mapper
-nnoremap z i<BS><Esc>l
-inoremap jj <Esc>
-"inoremap ( ()<Esc>i
-"inoremap [ []<Esc>i
-"inoremap { {}<Esc>i
-"inoremap < <><Esc>i
-"inoremap ' ''<Esc>i
-"inoremap " ""<Esc>i
-"inoremap <A-h> <Left>
-"inoremap <A-j> <Down>
-"inoremap <A-k> <Up>
-"inoremap <A-l> <Right>
-
 " Vim Configuration
-syntax on
+syntax off
 set vb t_vb=
 set tabstop=8
 set softtabstop=8
@@ -54,13 +39,19 @@ set langmenu=en_US.UTF-8
 set helplang=en
 set history=200
 let loaded_matchparen=1
-colorscheme onedark
 
-" Coc.nvim Configuration
-set hidden
-set nobackup
-set nowritebackup
-set updatetime=500
+" Vim-gutentags Configuration
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
 
 EOF
 
