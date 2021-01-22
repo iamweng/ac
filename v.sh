@@ -32,19 +32,13 @@ set smarttab
 set autoindent
 set cindent
 set nocompatible
-set encoding=utf-8
-set fileencodings=utf-8
-set termencoding=utf-8
-set langmenu=en_US.UTF-8
-set helplang=en
-set history=200
 set showcmd
 let loaded_matchparen=1
 
 " Vim-gutentags Configuration
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
 let g:gutentags_ctags_tagfile = '.tags'
-let s:vim_tags = expand('~/.cache/tags')
+let s:vim_tags = expand('~/.vim/cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
