@@ -17,9 +17,6 @@ export GOPATH=$HOME/github.com/go
 export GOBIN=$HOME/github.com/go/bin
 export PATH=$PATH:$HOME/github.com/go:$HOME/github.com/go/bin
 
-alias ll='ls -l'
-alias l='ls -al'
-
 EOF
 echo "INFO: $HOME/$shell_file file create successful."
 fi
