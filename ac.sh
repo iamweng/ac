@@ -16,6 +16,15 @@ if [ "$SHELL" = "/bin/zsh" ]; then
 	prompt="%F{red}[%n@%M:%1~]%#%f"
 fi
 
+if [ "$SHELL" = "/bin/bash" && ! -f ".bash_profile" ];then 
+cat > ".bash_profile" << EOF
+# If .bash_profile exists, bash doesn't read profile.
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+EOF
+fi
+
 if [ ! -f "$shell_file" ]; then
 cat > "$shell_file" << EOF
 # proxy configuration.
