@@ -1,32 +1,29 @@
 #!/bin/bash
 
-cd ~
+cd ~ # initialization work dir to home work dir
+shell_file=".bashrc" # initialization var shell_file
 
 ###########################################################################
-###########################################################################
-###########################################################################
-
-# This is shell configuration.
-
-shell_file=".bashrc"
-prompt="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
-
-if [ "$SHELL" = "/bin/zsh" ]; then
-	shell_file=".zshrc"
-	prompt="%F{red}[%n@%M:%1~]%#%f"
-fi
-
-if [ "$SHELL" = "/bin/bash" && ! -f ".bash_profile" ];then 
-cat > ".bash_profile" << EOF
+bash_profile_configuration() {
+	cat > ".bash_profile" << EOF
 # If .bash_profile exists, bash doesn't read profile.
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 EOF
-fi
-
-if [ ! -f "$shell_file" ]; then
-cat > "$shell_file" << EOF
+	echo "INFO: .bash_profile file create successful."
+}
+###########################################################################
+shell_configuration() {
+	# This is shell configuration.
+	prompt="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
+	
+	if [ "$SHELL" = "/bin/zsh" ]; then
+		prompt="%F{red}[%n@%M:%1~]%#%f"
+	fi
+	
+	
+	cat > "$shell_file" << EOF
 # proxy configuration.
 export http_proxy="socks5://127.0.0.1:1080"
 export https_proxy="socks5://127.0.0.1:1080"
@@ -35,33 +32,23 @@ export PS1="$prompt"
 alias sshz="ssh wengy@39.102.58.115"
 alias ll="ls -l"
 alias l="ls -l"
-alias la="ls -a"
+alias la="ls -al"
 EOF
-echo "INFO: $HOME/$shell_file file create successful."
-fi
-
+	echo "INFO: $HOME/$shell_file file create successful."
+}
 ###########################################################################
+vim_plug_configuration() {
+	# This is vim-plug configuration.
+	git clone https://github.com/junegunn/vim-plug
+	mkdir -p .vim/autoload/
+	cp vim-plug/plug.vim .vim/autoload/plug.vim
+	rm -rf vim-plug
+	echo "INFO: $HOME/.vim/autoload folder is create successful."
+}
 ###########################################################################
-###########################################################################
-
-# This is vim-plug configuration.
-
-if [ ! -d ".vim/autoload" ]; then
-git clone https://github.com/junegunn/vim-plug
-mkdir -p .vim/autoload/
-cp vim-plug/plug.vim .vim/autoload/plug.vim
-rm -rf vim-plug
-echo "INFO: $HOME/.vim/autoload folder is create successful."
-fi
-
-###########################################################################
-###########################################################################
-###########################################################################
-
-# This is vim configuration.
-
-if [ ! -f ".vimrc" ]; then
-cat > ".vimrc" << EOF
+vim_configuration() {
+	# This is vim configuration.
+	cat > ".vimrc" << EOF
 syntax on
 set number
 set showmode
@@ -85,9 +72,61 @@ set cindent
 
 inoremap jj <Esc>
 EOF
-echo "INFO: .vimrc file is create successful."
-fi
-
+	echo "INFO: .vimrc file is create successful."
+}
 ###########################################################################
+get_current_shell_file() {
+	shell_file=".bashrc"
+	if [ "$SHELL" = "/bin/zsh" ]; then
+		shell_file=".zshrc"	
+	fi
+}
 ###########################################################################
+create_file() {
+	if [ ! -f "$1" ]; then
+		read -p "Do you want to create $1 file ? Y/N: " answer
+	elif [ -f "$1" ]; then
+		read -p "Do you want to overwrite $1 file ? Y/N: " answer
+	fi
+	
+	case $answer in
+	y | Y | YES | yes)
+	        $2;;
+	n | N | NO | no)
+		;;
+	*)
+	        echo "you must enter y/n."
+		exit 2
+	esac
+}
 ###########################################################################
+create_folder() {
+	if [ ! -d "$1" ]; then
+		read -p "Do you want to create $1 folder ? Y/N: " answer
+	elif [ -d "$1" ]; then
+		read -p "Do you want to overwrite $1 folder ? Y/N: " answer
+	fi
+	
+	case $answer in
+	y | Y | YES | yes)
+		rm -rf $1
+	        $2;;
+	n | N | NO | no)
+		;;
+	*)
+	        echo "you must enter y/n."
+		exit 2
+	esac
+}
+###########################################################################
+main() {
+	get_current_shell_file
+	create_file $shell_file shell_configuration // create .bashrc or .zshrc
+	if [ "$SHELL" = "/bin/bash" ]; then
+		create_file .bash_profile bash_profile_configuration
+	fi
+	create_folder .vim/autoload vim_plug_configuration
+	create_file .vimrc vim_configuration
+}
+###########################################################################
+main
