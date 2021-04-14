@@ -1,18 +1,10 @@
 #!/bin/bash
+#author: wengy
+#date: 04/14/2021
 
 cd ~ # initialization work dir to home work dir
 shell_file=".bashrc" # initialization var shell_file
 
-###########################################################################
-bash_profile_configuration() {
-	cat > ".bash_profile" << EOF
-# If .bash_profile exists, bash doesn't read profile.
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-EOF
-	echo "INFO: .bash_profile file create successful."
-}
 ###########################################################################
 shell_configuration() {
 	# This is shell configuration.
@@ -35,15 +27,6 @@ alias l="ls -l"
 alias la="ls -al"
 EOF
 	echo "INFO: $HOME/$shell_file file create successful."
-}
-###########################################################################
-vim_plug_configuration() {
-	# This is vim-plug configuration.
-	git clone https://github.com/junegunn/vim-plug
-	mkdir -p .vim/autoload/
-	cp vim-plug/plug.vim .vim/autoload/plug.vim
-	rm -rf vim-plug
-	echo "INFO: $HOME/.vim/autoload folder is create successful."
 }
 ###########################################################################
 vim_configuration() {
@@ -75,6 +58,25 @@ EOF
 	echo "INFO: .vimrc file is create successful."
 }
 ###########################################################################
+vim_plug_configuration() {
+	# This is vim-plug configuration.
+	git clone https://github.com/junegunn/vim-plug
+	mkdir -p .vim/autoload/
+	cp vim-plug/plug.vim .vim/autoload/plug.vim
+	rm -rf vim-plug
+	echo "INFO: $HOME/.vim/autoload folder is create successful."
+}
+###########################################################################
+bash_profile_configuration() {
+	cat > ".bash_profile" << EOF
+# If .bash_profile exists, bash doesn't read profile.
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+EOF
+	echo "INFO: .bash_profile file create successful."
+}
+###########################################################################
 get_current_shell_file() {
 	shell_file=".bashrc"
 	if [ "$SHELL" = "/bin/zsh" ]; then
@@ -95,7 +97,7 @@ create_file() {
 	n | N | NO | no)
 		;;
 	*)
-	        echo "you must enter y/n."
+	        echo "you must enter Y/N."
 		exit 2
 	esac
 }
@@ -121,7 +123,7 @@ create_folder() {
 ###########################################################################
 main() {
 	get_current_shell_file
-	create_file $shell_file shell_configuration // create .bashrc or .zshrc
+	create_file $shell_file shell_configuration
 	if [ "$SHELL" = "/bin/bash" ]; then
 		create_file .bash_profile bash_profile_configuration
 	fi
