@@ -66,7 +66,7 @@ set autoindent
 set cindent
 
 inoremap jj <Esc>
-END
+EOF
 echo "INFO: .vimrc file is create successful."
 fi
 
