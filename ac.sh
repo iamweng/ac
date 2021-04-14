@@ -22,8 +22,11 @@ cat > "$shell_file" << EOF
 export http_proxy="socks5://127.0.0.1:1080"
 export https_proxy="socks5://127.0.0.1:1080"
 
+export PS1="$prompt"
 alias sshz="ssh wengy@39.102.58.115"
-export PS1=$prompt
+alias ll="ls -l"
+alias l="ls -l"
+alias la="ls -a"
 EOF
 echo "INFO: $HOME/$shell_file file create successful."
 fi
@@ -50,7 +53,7 @@ fi
 
 if [ ! -f ".vimrc" ]; then
 cat > ".vimrc" << EOF
-syntax off
+syntax on
 set number
 set showmode
 set noswapfile
