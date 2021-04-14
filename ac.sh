@@ -9,15 +9,21 @@ cd ~
 # This is shell configuration.
 
 shell_file=".bashrc"
+prompt="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
 
 if [ "$SHELL" = "/bin/zsh" ]; then
 	shell_file=".zshrc"
+	prompt="%F{red}[%n@%M:%1~]%#%f"
 fi
 
 if [ ! -f "$shell_file" ]; then
 cat > "$shell_file" << EOF
+# proxy configuration.
 export http_proxy="socks5://127.0.0.1:1080"
 export https_proxy="socks5://127.0.0.1:1080"
+
+alias sshz="ssh wengy@39.102.58.115"
+export PS1=$prompt
 EOF
 echo "INFO: $HOME/$shell_file file create successful."
 fi
