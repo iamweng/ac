@@ -17,7 +17,11 @@ elif [ "$SHELL" = "/bin/bash" ]; then
 fi
 
 # universal-ctags configuration.
-ctags_name="`ctags --version | awk '{print $1}' | head -n 1` `ctags --version| awk '{print $2}' | head -n 1`"
-if [[ `uname` = "Darwin" && "Universal Ctags" = "$ctags_name" ]]; then
-	export PATH=/usr/local/opt/m4/bin:$PATH
+if ! [ -x "$(command -v ctags)" ]; then
+	echo "WARNING: Universal-Ctags not yet installed."
+else
+	ctags_name="`ctags --version | awk '{print $1}' | head -n 1` `ctags --version| awk '{print $2}' | head -n 1`"
+	if [[ `uname` = "Darwin" && "Universal Ctags" = "$ctags_name" ]]; then
+		export PATH=/usr/local/opt/m4/bin:$PATH
+	fi
 fi

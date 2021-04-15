@@ -1,18 +1,21 @@
 syntax on
+filetype on
 set number
 set showmode
+set showcmd
 set noswapfile
 set nobackup
 set nocompatible
 set wrap
 set noerrorbells
+set vb t_vb=
 set ignorecase
 set mouse-=a
 set scrolloff=10
-set noexpandtab
 set fileencodings=utf-8,gb18030,ucs-bom,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
+set noexpandtab
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
@@ -21,15 +24,13 @@ set autoindent
 set cindent
 
 inoremap jj <Esc>
-
-" vim-plug configuration, need to install vim-plug first.
+" vim-plug
 if !empty(glob("~/.vim/autoload/plug.vim"))
 	call plug#begin("~/.vim/plugged")
 	Plug 'ludovicchabant/vim-gutentags'
 	call plug#end()
 endif
-
-" vim-gutentags configuration, need to install universal-ctags first.
+" vim-gutentags configuration.
 if !empty(glob("~/.vim/plugged/vim-gutentags"))
 	set tags=./.tags;.tags
 	let g:gutentags_project_root = [".root", ".svn", ".git", ".hg", ".project"]

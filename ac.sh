@@ -24,7 +24,6 @@ vim_plug_configuration() {
 	# This is vim-plug configuration.
 	git clone https://github.com/junegunn/vim-plug
 	mkdir -p .vim/autoload/
-	rm -rf .vim/plugged
 	mkdir .vim/plugged/
 	cp vim-plug/plug.vim .vim/autoload/plug.vim
 	rm -rf vim-plug
@@ -45,7 +44,7 @@ create_file() {
 	elif [ -f "$1" ]; then
 		read -p "Do you want to overwrite $1 file ? Y/N: " answer
 	fi
-	
+
 	case $answer in
 	y | Y | YES | yes)
 		rm -f $1
@@ -65,7 +64,7 @@ create_folder() {
 	elif [ -d "$1" ]; then
 		read -p "Do you want to overwrite $1 folder ? Y/N: " answer
 	fi
-	
+
 	case $answer in
 	y | Y | YES | yes)
 		rm -rf $1
@@ -84,7 +83,7 @@ main() {
 	if [ "$SHELL" = "/bin/bash" ]; then
 		create_file .bash_profile bash_profile_configuration
 	fi
-	create_folder .vim/autoload vim_plug_configuration
+	create_folder .vim vim_plug_configuration
 	create_file .vimrc vim_configuration
 }
 main
