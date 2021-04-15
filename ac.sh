@@ -3,7 +3,7 @@
 # date: 04/14/2021
 
 cd ~ # initialization work dir to home work dir
-shell_file=".bashrc" # initialization var shell_file
+shell_file=".`echo $SHELL | awk -F/ '{print $3}'`rc" # initialization var shell_file
 
 # This is shell_configuration method.
 shell_configuration() {
@@ -36,14 +36,6 @@ bash_profile_configuration() {
 	# This is .bash_profile configuration.
 	mv ac/bash_profile .bash_profile
 	echo "INFO: .bash_profile file create successful."
-}
-
-# This is get_current_shell_file method.
-get_current_shell_file() {
-	shell_file=".bashrc"
-	if [ "$SHELL" = "/bin/zsh" ]; then
-		shell_file=".zshrc"	
-	fi
 }
 
 # This is create_file method.
@@ -88,7 +80,6 @@ create_folder() {
 
 # This is main method.
 main() {
-	get_current_shell_file
 	create_file $shell_file shell_configuration
 	if [ "$SHELL" = "/bin/bash" ]; then
 		create_file .bash_profile bash_profile_configuration

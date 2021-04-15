@@ -22,14 +22,14 @@ set cindent
 
 inoremap jj <Esc>
 
-" vim-plug configuration.
+" vim-plug configuration, need to install vim-plug first.
 if !empty(glob("~/.vim/autoload/plug.vim"))
 	call plug#begin("~/.vim/plugged")
 	Plug 'ludovicchabant/vim-gutentags'
 	call plug#end()
 endif
 
-" vim-gutentags configuration.
+" vim-gutentags configuration, need to install universal-ctags first.
 if !empty(glob("~/.vim/plugged/vim-gutentags"))
 	set tags=./.tags;.tags
 	let g:gutentags_project_root = [".root", ".svn", ".git", ".hg", ".project"]

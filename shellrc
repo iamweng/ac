@@ -1,5 +1,3 @@
-cd ~
-
 # proxy configuration.
 export http_proxy="socks5://127.0.0.1:1080"
 export https_proxy="socks5://127.0.0.1:1080"
@@ -14,13 +12,12 @@ alias la="ls -al"
 # prompt configuration.
 if [ "$SHELL" = "/bin/zsh" ]; then
 	export PS1="%F{red}[%n@%M:%1~]%#%f"
-fi
-
-if [ "$SHELL" = "/bin/bash" ]; then
+elif [ "$SHELL" = "/bin/bash" ]; then
 	export PS1="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
 fi
 
 # universal-ctags configuration.
-if [[ `uname` = "Darwin" && -d ".vim/plugged/vim-gutentags" ]]; then
+ctags_name="`ctags --version | awk '{print $1}' | head -n 1` `ctags --version| awk '{print $2}' | head -n 1`"
+if [[ `uname` = "Darwin" && "Universal Ctags" = "$ctags_name" ]]; then
 	export PATH=/usr/local/opt/m4/bin:$PATH
 fi
