@@ -13,48 +13,15 @@ shell_configuration() {
 	if [ "$SHELL" = "/bin/zsh" ]; then
 		prompt="%F{red}[%n@%M:%1~]%#%f"
 	fi
-	
-	
-	cat > "$shell_file" << EOF
-# proxy configuration.
-export http_proxy="socks5://127.0.0.1:1080"
-export https_proxy="socks5://127.0.0.1:1080"
 
-export PS1="$prompt"
-alias sshz="ssh wengy@39.102.58.115"
-alias ll="ls -l"
-alias l="ls -l"
-alias la="ls -al"
-EOF
+	cp ac/shellrc $shell_file
+	echo export PS1="$prompt" >> $shell_file
 	echo "INFO: $HOME/$shell_file file create successful."
 }
 ###########################################################################
 vim_configuration() {
-	# This is vim configuration.
-	cat > ".vimrc" << EOF
-syntax on
-set number
-set showmode
-set noswapfile
-set nobackup
-set nocompatible
-set nowrap
-set noerrorbells
-set ignorecase
-set mouse-=a
-set scrolloff=10
-set fileencodings=utf-8,gb18030,ucs-bom,gbk,gb2312,cp936
-set termencoding=utf-8
-set encoding=utf-8
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
-set shiftround
-set autoindent
-set cindent
-
-inoremap jj <Esc>
-EOF
+	# This is .vimrc configuration.
+	cp ac/vimrc .vimrc
 	echo "INFO: .vimrc file is create successful."
 }
 ###########################################################################
@@ -68,12 +35,8 @@ vim_plug_configuration() {
 }
 ###########################################################################
 bash_profile_configuration() {
-	cat > ".bash_profile" << EOF
-# If .bash_profile exists, bash doesn't read profile.
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-EOF
+	# This is .bash_profile configuration.
+	mv ac/bash_profile .bash_profile
 	echo "INFO: .bash_profile file create successful."
 }
 ###########################################################################
@@ -93,6 +56,7 @@ create_file() {
 	
 	case $answer in
 	y | Y | YES | yes)
+		rm -f $1
 	        $2;;
 	n | N | NO | no)
 		;;

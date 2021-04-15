@@ -1,0 +1,9 @@
+# proxy configuration.
+export http_proxy="socks5://127.0.0.1:1080"
+export https_proxy="socks5://127.0.0.1:1080"
+# alias configuration.
+alias sshz="ssh wengy@39.102.58.115"
+alias sftpz="sftp wengy@39.102.58.115"
+alias ll="ls -l"
+alias l="ls -l"
+alias la="ls -al"
