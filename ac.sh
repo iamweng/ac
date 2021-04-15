@@ -1,6 +1,6 @@
 #!/bin/bash
-#author: wengy
-#date: 04/14/2021
+# author: wengy
+# date: 04/14/2021
 
 cd ~ # initialization work dir to home work dir
 shell_file=".bashrc" # initialization var shell_file
