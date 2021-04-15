@@ -1,12 +1,16 @@
+cd ~
+
 # proxy configuration.
 export http_proxy="socks5://127.0.0.1:1080"
 export https_proxy="socks5://127.0.0.1:1080"
+
 # alias configuration.
 alias sshz="ssh wengy@39.102.58.115"
 alias sftpz="sftp wengy@39.102.58.115"
 alias ll="ls -l"
 alias l="ls -l"
 alias la="ls -al"
+
 # prompt configuration.
 if [ "$SHELL" = "/bin/zsh" ]; then
 	export PS1="%F{red}[%n@%M:%1~]%#%f"
@@ -14,4 +18,9 @@ fi
 
 if [ "$SHELL" = "/bin/bash" ]; then
 	export PS1="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
+fi
+
+# universal-ctags configuration.
+if [[ `uname` = "Darwin" && -d ".vim/plugged/vim-gutentags" ]]; then
+	export PATH=/usr/local/opt/m4/bin:$PATH
 fi
