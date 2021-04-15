@@ -7,3 +7,11 @@ alias sftpz="sftp wengy@39.102.58.115"
 alias ll="ls -l"
 alias l="ls -l"
 alias la="ls -al"
+# prompt configuration.
+if [ "$SHELL" = "/bin/zsh" ]; then
+	export PS1="%F{red}[%n@%M:%1~]%#%f"
+fi
+
+if [ "$SHELL" = "/bin/bash" ]; then
+	export PS1="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
+fi

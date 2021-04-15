@@ -8,14 +8,7 @@ shell_file=".bashrc" # initialization var shell_file
 ###########################################################################
 shell_configuration() {
 	# This is shell configuration.
-	prompt="\[\e[31;10m\][\u@\H:\w]\$\[\e[0m\]"
-	
-	if [ "$SHELL" = "/bin/zsh" ]; then
-		prompt="%F{red}[%n@%M:%1~]%#%f"
-	fi
-
 	cp ac/shellrc $shell_file
-	echo export PS1="$prompt" >> $shell_file
 	echo "INFO: $HOME/$shell_file file create successful."
 }
 ###########################################################################
@@ -29,6 +22,8 @@ vim_plug_configuration() {
 	# This is vim-plug configuration.
 	git clone https://github.com/junegunn/vim-plug
 	mkdir -p .vim/autoload/
+	rm -rf .vim/plugged
+	mkdir .vim/plugged/
 	cp vim-plug/plug.vim .vim/autoload/plug.vim
 	rm -rf vim-plug
 	echo "INFO: $HOME/.vim/autoload folder is create successful."
@@ -61,7 +56,7 @@ create_file() {
 	n | N | NO | no)
 		;;
 	*)
-	        echo "you must enter Y/N."
+	        echo "ERROR: You must enter Y/N."
 		exit 2
 	esac
 }
@@ -80,7 +75,7 @@ create_folder() {
 	n | N | NO | no)
 		;;
 	*)
-	        echo "you must enter y/n."
+	        echo "ERROR: You must enter Y/N."
 		exit 2
 	esac
 }
