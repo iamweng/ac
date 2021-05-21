@@ -24,12 +24,14 @@ set autoindent
 set cindent
 
 inoremap jj <Esc>
+
 " vim-plug
 if !empty(glob("~/.vim/autoload/plug.vim"))
 	call plug#begin("~/.vim/plugged")
 	Plug 'ludovicchabant/vim-gutentags'
 	call plug#end()
 endif
+
 " vim-gutentags configuration.
 if !empty(glob("~/.vim/plugged/vim-gutentags"))
 	set tags=./.tags;.tags
